@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 log.d("mealApp", "Meal suggestion: $meal")
                 tVMeal.text = meal // Display meal suggestions
-            }, 1000) // Adding a delay
+            }, 1000) // Adding a delay by 1 second
         }
 
         // reset button
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             tVMeal.postDelayed({
                 tVMeal.text = "WOULD YOU LIKE TO ENTER ANOTHER TIME?"
                 log.d("mealApp", "Reset message displayed")
-            }, 2000) // Adding a delay
+            }, 2000) // Adding a delay by 2 seconds
         }
     }
 }
