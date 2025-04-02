@@ -58,4 +58,9 @@ The core functionality of the app is as follows:
 
 Feel free to fork the repository, open issues, and submit pull requests if you'd like to contribute improvements or bug fixes.
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
 
