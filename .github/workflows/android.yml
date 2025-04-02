@@ -39,20 +39,6 @@ jobs:
     - name: Run Unit Tests
       run: ./gradlew test  # Run unit tests
 
-    - name: Run UI Tests (Optional, if you have UI tests)
-      run: ./gradlew connectedAndroidTest
-      # If you are not running UI tests, you can comment out or remove this step.
-
-    - name: Debug APK Path
-      run: |
-        echo "Listing files in APK output directory..."
-        ls -R app/build/outputs/apk/debug/  # Ensure this path is correct
-
-    - name: Debug Test Results Path
-      run: |
-        echo "Listing files in test results directory..."
-        ls -R app/build/test-results/  # Ensure this path is correct
-
     - name: Upload APK as artifact
       uses: actions/upload-artifact@v3
       with:
