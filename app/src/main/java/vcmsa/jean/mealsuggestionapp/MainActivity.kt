@@ -8,6 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.util.Log as log
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,24 +30,29 @@ class MainActivity : AppCompatActivity() {
         btnSubmit.setOnClickListener {
             val time = edTTime.text.toString()
             var meal = "SUGGESTIONS"
+
+            log.d("mealApp", "submit button clicked. Time entered: $time")
+
             tVMeal.postDelayed({
 
-                if (time == "morning") {
-                    meal = "Toast with egg, avocado and cranberries!!"
-                } else if (time == "mid-morning") {
-                    meal = "Yogurt, banana and peanut butter smoothie!!"
-                } else if (time == "afternoon") {
-                    meal = "Chicken and mayonnaise bagel!!"
-                } else if (time == "mid-afternoon") {
-                    meal = "Fruit salad!!"
-                } else if (time == "dinner") {
-                    meal = "Lamb shank with rice and vegetables!!"
-                } else if (time == "after-dinner") {
-                    meal = "Coffee with milk and honey!!"
+
+                if (time.equals("morning", ignoreCase = true)) {
+                    meal = "Toast with egg, avocado and cranberries!! or \n Oatmeal with banana and peanut butter!!"
+                } else if (time.equals("mid-morning", ignoreCase = true)) {
+                    meal = "Yogurt, banana and peanut butter smoothie!! or \n Avocado and banana smoothie!!"
+                } else if (time.equals("afternoon", ignoreCase = true)) {
+                    meal = "Chicken and mayonnaise bagel!! or \n Turkey and cheese bagel!!"
+                } else if (time.equals("mid-afternoon", ignoreCase = true)) {
+                    meal = "Fruit salad!! or \n Apple and bananas!!"
+                } else if (time.equals("dinner", ignoreCase = true)) {
+                    meal = "Lamb shank with rice and vegetables!! or \n Chicken and rice with vegetables!!"
+                } else if (time.equals("after-dinner", ignoreCase = true)) {
+                    meal = "Coffee with milk and honey!! or \n Tea with milk and honey!!"
                 } else {
+                    log.d("mealApp", "Invalid time entered: $time")
                     meal = "INVALID TIME"
                 }
-
+                log.d("mealApp", "Meal suggestion: $meal")
                 tVMeal.text = meal // Display meal suggestions
             }, 1000) // Adding a delay
         }
@@ -54,9 +61,12 @@ class MainActivity : AppCompatActivity() {
         btnReset.setOnClickListener {
             edTTime.text.clear()
             tVMeal.text = "RESET SUCCESSFUL"  // reset message
+            log.d("mealApp", "Reset button clicked")
+
             // checks if reset message has been displayed
             tVMeal.postDelayed({
                 tVMeal.text = "WOULD YOU LIKE TO ENTER ANOTHER TIME?"
+                log.d("mealApp", "Reset message displayed")
             }, 2000) // Adding a delay
         }
     }
