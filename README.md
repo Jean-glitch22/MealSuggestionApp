@@ -22,7 +22,7 @@ A simple Android application built using Kotlin to suggest meals based on the ti
 ![Screenshot 2025-04-02 034750](https://github.com/user-attachments/assets/472aa819-08b2-41de-96ab-52724b055fe9)
 
 
-## Installation
+## Youtube Link-https://youtube.com/shorts/6d4oiKxkaPA
 
 ### Prerequisites
 
