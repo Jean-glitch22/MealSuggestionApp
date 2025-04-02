@@ -34,24 +34,35 @@ jobs:
         fi
 
     - name: Build APK
-      run: ./gradlew assembleDebug  # Ensure correct task is used to build APK
+      run: ./gradlew assembleDebug
 
     - name: Run Unit Tests
       run: ./gradlew test
 
-    - name: Run UI Tests (Optional)
+    - name: Run UI Tests (Optional, if needed)
       run: ./gradlew connectedAndroidTest
+      # If you are not running UI tests or don't have an emulator setup, you can comment this out
+
+    - name: Debug APK Path
+      run: |
+        echo "Listing files in APK output directory..."
+        ls -R app/build/outputs/apk/debug/
+
+    - name: Debug Test Results Path
+      run: |
+        echo "Listing files in test results directory..."
+        ls -R app/build/test-results/
 
     - name: Upload APK as artifact
       uses: actions/upload-artifact@v3
       with:
         name: android-apk
-        path: app/build/outputs/apk/debug/app-debug.apk  # Check if this path is correct
+        path: app/build/outputs/apk/debug/app-debug.apk  # Ensure this is correct
 
-    - name: Upload test results
+    - name: Upload test results as artifact
       uses: actions/upload-artifact@v3
       with:
         name: test-results
-        path: app/build/test-results  # Ensure this path is correct for your test results
+        path: app/build/test-results  # Ensure this is correct for your project
 
 
