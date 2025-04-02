@@ -34,7 +34,7 @@ jobs:
         fi
 
     - name: Build APK
-      run: ./gradlew build
+      run: ./gradlew assembleDebug  # Ensure you're using the correct gradle task to build APK
 
     - name: Run Unit Tests
       run: ./gradlew test
@@ -46,11 +46,12 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: android-apk
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: app/build/outputs/apk/debug/app-debug.apk  # Ensure this is the correct path for the generated APK
 
     - name: Upload test results (Optional)
       uses: actions/upload-artifact@v3
       with:
         name: test-results
-        path: app/build/test-results
+        path: app/build/test-results  # Ensure this is the correct path for test results
+
 
