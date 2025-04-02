@@ -9,8 +9,11 @@ A simple Android application built using Kotlin to suggest meals based on the ti
 - **Edge-to-Edge Design:** The app is designed to support edge-to-edge displays for modern Android devices.
   
 ## Screenshots
+![Screenshot 2025-04-02 034535](https://github.com/user-attachments/assets/a26f6244-9055-4fb6-93e2-f76d53acab27)
+![Screenshot 2025-04-02 034652](https://github.com/user-attachments/assets/620d7cd4-a5e5-4e56-a97e-fab76bb31109)
+![Screenshot 2025-04-02 034720](https://github.com/user-attachments/assets/e6b145f0-b691-40cf-991d-5d350b09d7ae)
+![Screenshot 2025-04-02 034750](https://github.com/user-attachments/assets/472aa819-08b2-41de-96ab-52724b055fe9)
 
-(Include screenshots of the app here if needed.)
 
 ## Installation
 
