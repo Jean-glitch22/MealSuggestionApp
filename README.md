@@ -1,6 +1,13 @@
 # Meal Suggestion App
 
+#Author
+Jean Oberholzer
+
 A simple Android application built using Kotlin to suggest meals based on the time of day. The app takes user input for the time of day (e.g., "morning", "mid-afternoon", "dinner") and displays meal suggestions.
+
+#Technologies Used
+-Kotlin
+-Android SDK
 
 ## Features
 
