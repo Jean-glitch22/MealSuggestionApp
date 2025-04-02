@@ -24,7 +24,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Clean Gradle Build
-      run: ./gradlew clean  # Clean build before starting
+      run: ./gradlew clean
 
     - name: Verify gradlew file exists
       run: |
@@ -34,24 +34,24 @@ jobs:
         fi
 
     - name: Build APK
-      run: ./gradlew assembleDebug  # Ensure you're using the correct gradle task to build APK
+      run: ./gradlew assembleDebug  # Ensure correct task is used to build APK
 
     - name: Run Unit Tests
       run: ./gradlew test
 
-    - name: Run UI Tests (Optional, if you have UI tests)
+    - name: Run UI Tests (Optional)
       run: ./gradlew connectedAndroidTest
 
-    - name: Upload APK as artifact (Optional, if you want to store the APK)
+    - name: Upload APK as artifact
       uses: actions/upload-artifact@v3
       with:
         name: android-apk
-        path: app/build/outputs/apk/debug/app-debug.apk  # Ensure this is the correct path for the generated APK
+        path: app/build/outputs/apk/debug/app-debug.apk  # Check if this path is correct
 
-    - name: Upload test results (Optional)
+    - name: Upload test results
       uses: actions/upload-artifact@v3
       with:
         name: test-results
-        path: app/build/test-results  # Ensure this is the correct path for test results
+        path: app/build/test-results  # Ensure this path is correct for your test results
 
 
