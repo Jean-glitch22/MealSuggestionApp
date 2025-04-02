@@ -2,25 +2,64 @@ name: Android CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - "master"
+      - "main"  # Added 'main' to handle more modern default branches
+      - "develop"  # Optionally trigger builds for other branches
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - "master"
+      - "main"  # Include 'main' for pull requests
+      - "develop"  # Optionally trigger PR builds for other branches
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: set up JDK 11
+      # Check out the repository
+    - name: Check out code
+      uses: actions/checkout@v4
+
+      # Set up JDK 11 with caching
+    - name: Set up JDK 11
       uses: actions/setup-java@v4
       with:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
 
+      # Cache Gradle dependencies to speed up builds
+    - name: Cache Gradle dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.gradle/caches, ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+
+      # Grant execute permission for gradlew
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+
+      # Build with Gradle
     - name: Build with Gradle
       run: ./gradlew build
+
+      # Run tests (optional but recommended)
+    - name: Run unit tests
+      run: ./gradlew test --no-daemon
+
+      # Optionally, run lint checks to ensure code quality
+    - name: Run lint checks
+      run: ./gradlew lint
+
+      # Optional step to upload build artifacts (like APKs or AABs)
+    - name: Upload APKs as artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: apk-artifacts
+        path: app/build/outputs/apk/release/*.apk  # Change this path based on your project setup
+
+      # Optional: If you want to upload build output, you can also store the results as a CI artifact
+
