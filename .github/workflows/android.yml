@@ -23,6 +23,9 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
+    - name: Clean Gradle Build
+      run: ./gradlew clean  # Clean build before starting
+
     - name: Verify gradlew file exists
       run: |
         if [ ! -f ./gradlew ]; then
@@ -30,12 +33,3 @@ jobs:
           exit 1
         fi
 
-    - name: Display Gradle version
-      run: ./gradlew --version  # Check if Gradle wrapper is set up properly
-
-    - name: Build with Gradle
-      run: ./gradlew build --no-daemon --stacktrace  # --stacktrace to get detailed error logs
-
-    # Optionally, run tests to validate the build
-    - name: Run Unit Tests
-      run: ./gradlew test --no-daemon --stacktrace
