@@ -33,3 +33,24 @@ jobs:
           exit 1
         fi
 
+    - name: Build APK
+      run: ./gradlew build
+
+    - name: Run Unit Tests
+      run: ./gradlew test
+
+    - name: Run UI Tests (Optional, if you have UI tests)
+      run: ./gradlew connectedAndroidTest
+
+    - name: Upload APK as artifact (Optional, if you want to store the APK)
+      uses: actions/upload-artifact@v3
+      with:
+        name: android-apk
+        path: app/build/outputs/apk/debug/app-debug.apk
+
+    - name: Upload test results (Optional)
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: app/build/test-results
+
